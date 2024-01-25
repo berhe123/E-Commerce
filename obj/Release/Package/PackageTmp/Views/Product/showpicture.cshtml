@@ -1,0 +1,26 @@
+﻿@model E_Commerce.Models.Product
+
+@{
+    ViewBag.Title = "showpicture";
+}
+
+
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+
+        <dd>
+            <img src="~/images/@Model.photo" width="500" height="400">
+        </dd>
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Back", "Index")
+</p>

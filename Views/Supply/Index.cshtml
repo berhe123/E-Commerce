@@ -1,0 +1,82 @@
+﻿@model IEnumerable<E_Commerce.Models.Supply>
+@{
+    ViewBag.Title = "Maintain supply";
+}
+<h2>Maintain Supply</h2>
+<div class="col-md-offset-4">
+    @using (Html.BeginForm("Index", "Supply", FormMethod.Get))
+    {
+        @Html.TextBox("search")<input type="submit" value="Search" />
+    }
+</div>
+
+<p class="btn btn-success col-md-offset-0 ">
+    @Html.ActionLink("Add", "Create", null, new { Style = "color:White" })
+</p>
+<table class="table table-bordered table-condensed table-hover">
+    <tr class="info">
+        <th>
+            Number
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.supplyname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Match any Document
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr class="active">
+            <td>
+                @Html.DisplayFor(modelItem => item.suppyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.supplyname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="btn btn-success col-md-offset-0 pull-left col-md-4">
+                @Html.ActionLink("Edit", "Edit", new { id = item.suppyId })
+            </td>
+            <td class="btn btn-warning col-md-offset-1 pull-left col-md-3">
+                @Html.ActionLink("Details", "Details", new { id = item.suppyId })
+            </td>
+            <td class="btn btn-danger col-md-offset-1 pull-left col-md-3 ">
+                @Html.ActionLink("Delete", "Delete", new { id = item.suppyId })
+            </td>
+        </tr>
+    }
+
+</table>

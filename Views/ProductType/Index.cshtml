@@ -1,0 +1,64 @@
+﻿@model IEnumerable<E_Commerce.Models.ProductType>
+
+@{
+    ViewBag.Title = "maintain product type";
+}
+
+<h2>Maintain Product type</h2>
+<div class="col-md-offset-4">
+    @using (Html.BeginForm("Index", "ProductType", FormMethod.Get))
+    {
+        @Html.TextBox("search")<input type="submit" value="Search" />
+    }
+</div>
+<p class="btn btn-success col-md-offset-0 font-weight-lighter ">
+    @Html.ActionLink("Add", "Create", null, new { Style = "color:White" })
+</p>
+<table class="table table-bordered table-condensed table-hover ">
+    <tr class="info">
+        <th>
+            Number
+        <th>
+            @Html.DisplayNameFor(model => model.product_type_name)
+        </th>
+        <th></th>
+    </tr>
+
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Match any Document
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr class="active">
+            <td>
+                @Html.DisplayFor(modelItem => item.producttypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_type_name)
+            </td>
+            <td class="btn btn-success col-md-offset-0 pull-left col-md-2  ">
+                @Html.ActionLink("Edit", "Edit", new { id = item.producttypeId })
+            </td>
+            <td class="btn btn-warning col-md-offset-1 pull-left col-md-2 ">
+                @Html.ActionLink("Details", "Details", new { id = item.producttypeId })
+            </td>
+            <td class="btn btn-danger col-md-offset-1 pull-left col-md-2 ">
+                @Html.ActionLink("Delete", "Delete", new { id = item.producttypeId })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ecomerceModelStoreContainer" CdmEntityContainer="DBCOntexEntities">
+    <EntitySetMapping Name="Color_Options">
+      <EntityTypeMapping TypeName="ecomerceModel.Color_Options">
+        <MappingFragment StoreEntitySet="Color_Options">
+          <ScalarProperty Name="color_OptionsId" ColumnName="color_OptionsId" />
+          <ScalarProperty Name="color_Type" ColumnName="color_Type" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ecomerceModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="salemodel" ColumnName="salemodel" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="suppyId" ColumnName="suppyId" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="producttypeId" ColumnName="producttypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTypes">
+      <EntityTypeMapping TypeName="ecomerceModel.ProductType">
+        <MappingFragment StoreEntitySet="ProductType">
+          <ScalarProperty Name="producttypeId" ColumnName="producttypeId" />
+          <ScalarProperty Name="product_type_name" ColumnName="product_type_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplies">
+      <EntityTypeMapping TypeName="ecomerceModel.Supply">
+        <MappingFragment StoreEntitySet="Supply">
+          <ScalarProperty Name="suppyId" ColumnName="suppyId" />
+          <ScalarProperty Name="supplyname" ColumnName="supplyname" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

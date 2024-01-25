@@ -1,0 +1,91 @@
+﻿@model IEnumerable<E_Commerce.Models.Product>
+@{
+    ViewBag.Title = "Product";
+}
+@{
+    E_Commerce.Models.DBCOntexEntities db = new E_Commerce.Models.DBCOntexEntities();
+}
+<h2>Maintain Product</h2>
+<div class="col-md-offset-4">
+    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+    {
+        @Html.TextBox("search")<input type="submit" value="Search"/>
+    }
+    </div>
+    <p class="btn btn-success col-md-offset-0 ">
+        @Html.ActionLink("Add", "Create", null, new { Style = "color:White" })
+    </p>
+    <table class="table table-bordered table-condensed table-hover">
+    <tr class="info">
+        <th> Number</th>
+        <th>
+            @Html.DisplayNameFor(model => model.model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salemodel)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductType.product_type_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supply.supplyname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo)
+        </th>
+        <th></th>
+    </tr>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Match any Document
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+    @foreach (var item in Model)
+    {
+        <tr class="active">
+            <td>
+                @Html.DisplayFor(modelItem => item.productId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salemodel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductType.product_type_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supply.supplyname)
+            </td>
+            <td>
+                @Html.ActionLink("show picture", "showpicture", new { id = item.productId })
+            </td>
+            <td class="btn btn-success col-md-offset-0 pull-left col-md-3">
+                @Html.ActionLink("Edit", "Edit", new { id = item.productId })
+            </td>
+            <td class="btn btn-warning col-md-offset-1 pull-left col-md-3">
+                @Html.ActionLink("Detail", "Details", new { id = item.productId })
+            </td>
+            <td class="btn btn-danger col-md-offset-1 pull-left col-md-4 ">
+                @Html.ActionLink("Delete", "Delete", new { id = item.productId })
+            </td>
+        </tr>
+    }
+
+</table>

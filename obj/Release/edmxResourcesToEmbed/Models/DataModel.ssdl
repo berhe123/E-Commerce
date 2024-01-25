@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ecomerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Color_Options">
+    <Key>
+      <PropertyRef Name="color_OptionsId" />
+    </Key>
+    <Property Name="color_OptionsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="color_Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="model" Type="varchar" MaxLength="50" />
+    <Property Name="suppyId" Type="int" />
+    <Property Name="price" Type="float" />
+    <Property Name="producttypeId" Type="int" />
+    <Property Name="salemodel" Type="varchar" MaxLength="50" />
+    <Property Name="photo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="producttypeId" />
+    </Key>
+    <Property Name="producttypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_type_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Supply">
+    <Key>
+      <PropertyRef Name="suppyId" />
+    </Key>
+    <Property Name="suppyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="supplyname" Type="varchar" MaxLength="50" />
+    <Property Name="telephone" Type="varchar" MaxLength="50" />
+    <Property Name="adress" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Color_Opt__produ__5165187F">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Color_Options" Type="Self.Color_Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="Color_Options">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__product__534D60F1">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="producttypeId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="producttypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__suppyId__52593CB8">
+    <End Role="Supply" Type="Self.Supply" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supply">
+        <PropertyRef Name="suppyId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="suppyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ecomerceModelStoreContainer">
+    <EntitySet Name="Color_Options" EntityType="Self.Color_Options" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Color_Opt__produ__5165187F" Association="Self.FK__Color_Opt__produ__5165187F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Color_Options" EntitySet="Color_Options" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__product__534D60F1" Association="Self.FK__Product__product__534D60F1">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__suppyId__52593CB8" Association="Self.FK__Product__suppyId__52593CB8">
+      <End Role="Supply" EntitySet="Supply" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
